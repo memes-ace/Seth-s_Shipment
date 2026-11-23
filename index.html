@@ -1,0 +1,1561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seth's Shipment — Freight Services</title>
+    <meta name="description" content="Scroll-driven freight hero and integrated logistics services showcase for Seth's Shipment." />
+    <meta property="og:title" content="Seth's Shipment — Freight Services" />
+    <meta property="og:description" content="Scroll-driven freight hero and integrated logistics services showcase for Seth's Shipment." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/anton-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-latin.woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Anton';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/anton-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Archivo';
+        font-style: normal;
+        font-weight: 400 600;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url('/fonts/archivo-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      :root {
+        --white: #fff;
+        --ink: #111;
+        --cobalt: #2f63ff;
+        --ghost: #e9e9e9;
+        --u: min(calc(100vw / 1440), calc(100vh / 960));
+        --edge-px: 44.8vh;
+        --ph: 0;
+      }
+
+      @media (max-width: 767.98px), (orientation: portrait) {
+        :root {
+          --u: min(calc(100vw / 430), 1.4px);
+        }
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--white);
+        color: var(--ink);
+        font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: clip;
+      }
+
+      a,
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid var(--cobalt);
+        outline-offset: 3px;
+      }
+
+      /* Scroll track */
+      .track {
+        position: relative;
+        width: 100%;
+        background: var(--white);
+        min-height: 100vh;
+      }
+
+      /* Top nav — absolute at top of track so it scrolls away */
+      .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: calc(24 * var(--u)) calc(26 * var(--u));
+        pointer-events: none;
+      }
+
+      .nav > * {
+        pointer-events: auto;
+      }
+
+      .nav-brand {
+        font-family: 'Archivo', sans-serif;
+        font-weight: 600;
+        font-size: calc(26 * var(--u));
+        line-height: 1;
+        letter-spacing: -0.045em;
+        color: var(--ink);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: calc(24 * var(--u));
+        flex-shrink: 0;
+      }
+
+      .nav-link {
+        font-family: 'Archivo', sans-serif;
+        font-weight: 500;
+        font-size: calc(10 * var(--u));
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink);
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: opacity 0.18s ease;
+      }
+
+      .nav-link:hover {
+        opacity: 0.6;
+      }
+
+      .nav-pill {
+        font-family: 'Archivo', sans-serif;
+        font-weight: 500;
+        font-size: calc(10 * var(--u));
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink);
+        border: 1px solid rgba(17, 17, 17, 0.35);
+        border-radius: 999px;
+        padding: calc(9 * var(--u)) calc(16 * var(--u));
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .nav-pill:hover {
+        background: var(--ink);
+        color: var(--white);
+        border-color: var(--ink);
+      }
+
+      /* Sticky scene */
+      .scene {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100lvh;
+        overflow: hidden;
+        background: linear-gradient(
+          to bottom,
+          var(--white) 0,
+          var(--white) var(--edge-px),
+          var(--ink) var(--edge-px),
+          var(--ink) 100%
+        );
+      }
+
+      /* Layer 1: Scrubbed video */
+      .clip {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        max-width: none;
+        opacity: 1;
+        pointer-events: none;
+        background: transparent;
+      }
+
+      /* Layer 2: Giant letters behind truck via mix-blend-mode: darken */
+      .letters {
+        position: absolute;
+        left: 0;
+        top: var(--edge-px);
+        z-index: 2;
+        font-family: 'Anton', sans-serif;
+        font-weight: 400;
+        font-size: calc(330 * var(--u));
+        line-height: 0.8;
+        color: var(--ghost);
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        mix-blend-mode: darken;
+        pointer-events: none;
+        user-select: none;
+        transform: translate3d(100vw, -100%, 0);
+        will-change: transform;
+      }
+
+      /* Layer 3: Speed readout */
+      .readout {
+        position: absolute;
+        left: calc(26 * var(--u));
+        top: calc(52 * var(--u));
+        z-index: 4;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 400;
+        font-size: calc(10.5 * var(--u));
+        line-height: 1;
+        letter-spacing: 0.04em;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink);
+        opacity: var(--ph);
+        transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* Layer 4: Dark band container from --edge-px to bottom */
+      .band {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: var(--edge-px);
+        bottom: 0;
+        z-index: 3;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      /* Horizontal services strip */
+      .strip {
+        position: absolute;
+        top: calc(76 * var(--u));
+        left: 0;
+        display: flex;
+        align-items: flex-start;
+        gap: calc(120 * var(--u));
+        color: var(--white);
+        transform: translate3d(100vw, 0, 0);
+        will-change: transform;
+        pointer-events: auto;
+      }
+
+      .lead {
+        display: flex;
+        align-items: flex-start;
+        gap: calc(64 * var(--u));
+        flex-shrink: 0;
+      }
+
+      .lead-title {
+        margin: 0;
+        font-family: 'Anton', sans-serif;
+        font-weight: 400;
+        font-size: calc(64 * var(--u));
+        line-height: 0.98;
+        text-transform: uppercase;
+        color: var(--white);
+        white-space: nowrap;
+      }
+
+      .lead-title .accent {
+        color: var(--cobalt);
+      }
+
+      .lead-copy {
+        width: calc(250 * var(--u));
+        display: flex;
+        flex-direction: column;
+        gap: calc(14 * var(--u));
+        font-family: 'Archivo', sans-serif;
+        font-weight: 400;
+        font-size: calc(12 * var(--u));
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .lead-copy p {
+        margin: 0;
+      }
+
+      .cards {
+        display: flex;
+        align-items: stretch;
+        flex-shrink: 0;
+      }
+
+      .card {
+        box-sizing: content-box;
+        width: calc(270 * var(--u));
+        padding: 0 calc(30 * var(--u));
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card:first-child {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .card-icon {
+        width: calc(38 * var(--u));
+        height: calc(38 * var(--u));
+        color: var(--white);
+        margin-bottom: calc(22 * var(--u));
+        flex-shrink: 0;
+        opacity: var(--icon-op, 1);
+      }
+
+      .card-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-title {
+        margin: 0 0 calc(12 * var(--u));
+        font-family: 'Anton', sans-serif;
+        font-weight: 400;
+        font-size: calc(26 * var(--u));
+        line-height: 1.04;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .card-body {
+        margin: 0;
+        font-family: 'Archivo', sans-serif;
+        font-weight: 400;
+        font-size: calc(12.4 * var(--u));
+        line-height: 1.48;
+      }
+
+      .card-title,
+      .card-body {
+        --s: -40%;
+        background-image: linear-gradient(
+          90deg,
+          var(--white) 0%,
+          var(--white) calc(var(--s) - 34%),
+          var(--cobalt) calc(var(--s) - 6%),
+          transparent calc(var(--s) + 26%)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+
+      /* Bottom centered "Our services" outline pill */
+      .services-pill {
+        position: absolute;
+        left: 50%;
+        bottom: calc(36 * var(--u));
+        font-family: 'Archivo', sans-serif;
+        font-weight: 500;
+        font-size: calc(10 * var(--u));
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        padding: calc(10 * var(--u)) calc(18 * var(--u));
+        white-space: nowrap;
+        pointer-events: auto;
+        opacity: var(--ph);
+        transform: translate3d(-50%, calc((1 - var(--ph)) * 24px), 0);
+        transition:
+          opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.18s ease,
+          background-color 0.18s ease,
+          color 0.18s ease;
+      }
+
+      .services-pill:hover {
+        background: var(--white);
+        color: var(--ink);
+        border-color: var(--white);
+      }
+
+      /* Minimal interactive drawer for nav links / Work with us */
+      .drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        background: rgba(17, 17, 17, 0.48);
+        display: flex;
+        justify-content: flex-end;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .drawer-backdrop[data-open="true"] {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .drawer {
+        width: min(460px, 100vw);
+        height: 100%;
+        overflow-y: auto;
+        background: var(--ink);
+        color: var(--white);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 28px;
+        transform: translate3d(24px, 0, 0);
+        transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .drawer-backdrop[data-open="true"] .drawer {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .drawer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .drawer-brand {
+        font-family: 'Archivo', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: -0.06em;
+      }
+
+      .drawer-close {
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 999px;
+      }
+
+      .drawer-close:hover {
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      .drawer-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 24px;
+        gap: 24px;
+      }
+
+      .track-section {
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .track-heading {
+        margin: 0;
+        font-family: 'Anton', sans-serif;
+        font-size: 24px;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+      }
+
+      .track-form {
+        display: flex;
+        gap: 8px;
+      }
+
+      .track-input {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: var(--white);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        text-transform: uppercase;
+        border-radius: 4px;
+      }
+
+      .track-btn {
+        padding: 10px 16px;
+        background: var(--cobalt);
+        color: var(--white);
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 999px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .track-samples {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .track-sample {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .track-sample:hover {
+        color: var(--cobalt);
+      }
+
+      .track-result {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+      }
+
+      .track-summary {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .track-id {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        color: var(--white);
+      }
+
+      .track-route {
+        margin: 4px 0 0;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .track-follow-btn {
+        padding: 7px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--white);
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .track-follow-btn[data-following="true"] {
+        background: var(--cobalt);
+        border-color: var(--cobalt);
+      }
+
+      .track-stages {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .track-stage {
+        display: grid;
+        grid-template-columns: 14px 1fr;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .stage-dot {
+        width: 10px;
+        height: 10px;
+        margin-top: 4px;
+        border-radius: 999px;
+        border: 1.5px solid rgba(255, 255, 255, 0.28);
+        background: transparent;
+      }
+
+      .track-stage[data-state="done"] .stage-dot {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(255, 255, 255, 0.85);
+      }
+
+      .track-stage[data-state="current"] .stage-dot {
+        background: var(--cobalt);
+        border-color: var(--cobalt);
+        box-shadow: 0 0 0 3px rgba(47, 99, 255, 0.28);
+      }
+
+      .stage-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .track-stage[data-state="done"] .stage-name {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .track-stage[data-state="current"] .stage-name {
+        color: var(--white);
+      }
+
+      .stage-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--cobalt);
+      }
+
+      .stage-detail {
+        margin: 2px 0 0;
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .track-stage[data-state="current"] .stage-detail {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .track-follow-note {
+        margin: 0;
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .drawer-title {
+        margin: 0;
+        font-family: 'Anton', sans-serif;
+        font-size: 40px;
+        line-height: 0.98;
+        text-transform: uppercase;
+      }
+
+      .drawer-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .drawer-jump {
+        text-align: left;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .drawer-jump:hover {
+        color: var(--cobalt);
+      }
+
+      .drawer-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .drawer-field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .drawer-field input,
+      .drawer-field textarea {
+        width: 100%;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--white);
+        font-family: 'Archivo', sans-serif;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+
+      .drawer-submit {
+        margin-top: 6px;
+        padding: 12px 18px;
+        background: var(--cobalt);
+        color: var(--white);
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 999px;
+        align-self: flex-start;
+      }
+
+      .drawer-status {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .drawer-foot {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      /* Phones (below 768px, or any portrait screen) */
+      @media (max-width: 767.98px), (orientation: portrait) {
+        .nav {
+          padding: 20px 22px;
+        }
+
+        .nav-brand {
+          font-size: clamp(16px, calc(19 * var(--u)), 22px);
+        }
+
+        .nav-links {
+          gap: 16px;
+        }
+
+        .nav-link,
+        .nav-pill {
+          font-size: 11px;
+        }
+
+        .nav-pill {
+          padding: 8px 14px;
+        }
+
+        .nav-follow {
+          display: none;
+        }
+
+        .letters {
+          font-size: calc(180 * var(--u));
+        }
+
+        .readout {
+          left: 20px;
+          top: 22px;
+          font-size: 11px;
+        }
+
+        .strip {
+          top: calc(44 * var(--u));
+          gap: calc(56 * var(--u));
+          padding-left: 22px;
+        }
+
+        .lead {
+          flex-direction: column;
+          gap: calc(20 * var(--u));
+        }
+
+        .lead-title {
+          font-size: calc(46 * var(--u));
+        }
+
+        .lead-copy {
+          width: calc(300 * var(--u));
+          font-size: calc(13 * var(--u));
+        }
+
+        .card {
+          width: calc(250 * var(--u));
+          padding: 0 calc(24 * var(--u));
+        }
+
+        .card:first-child {
+          padding-left: 0;
+        }
+
+        .card-title {
+          font-size: calc(26 * var(--u));
+        }
+
+        .card-body {
+          font-size: calc(13 * var(--u));
+        }
+
+        .services-pill {
+          font-size: 11px;
+          padding: 9px 16px;
+          bottom: calc(28 * var(--u));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="track" id="track">
+      <header class="nav" aria-label="Primary navigation">
+        <a href="#top" class="nav-brand" id="nav-brand">Seth's Shipment</a>
+        <nav class="nav-links">
+          <button type="button" class="nav-link" id="btn-menu">→ Menu</button>
+          <button type="button" class="nav-link nav-follow" id="btn-follow">Follow</button>
+          <button type="button" class="nav-pill" id="btn-work">Work with us</button>
+        </nav>
+      </header>
+
+      <section class="scene" id="scene" aria-label="Seth's Shipment freight handling and services">
+        <video
+          id="clip"
+          class="clip"
+          muted
+          playsinline
+          preload="auto"
+          poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/2307e4bf-be39-42b4-b579-e168aeccabf0.jpg"
+        ></video>
+
+        <div class="letters" id="letters" aria-hidden="true">OUR SERVICES</div>
+
+        <div class="readout" id="readout" aria-live="off">00 KM/H</div>
+
+        <div class="band" id="band">
+          <div class="strip" id="strip">
+            <div class="lead" id="lead">
+              <h1 class="lead-title">
+                EVERYTHING YOUR<br />
+                FREIGHT NEEDS.<br />
+                <span class="accent">UNDER ONE GROUP.</span>
+              </h1>
+              <div class="lead-copy">
+                <p>From air to sea, from customs clearance to the last mile, we bring decades of practice to every freight discipline.</p>
+                <p>One integrated network means one partner, one point of contact and full visibility from origin to destination.</p>
+              </div>
+            </div>
+
+            <div class="cards" id="cards">
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 20.5L33 13.5L26 22.5L5 20.5Z" />
+                    <path d="M15 18L11.5 9.5L15.5 9.5L21.5 16.4" />
+                    <path d="M17.5 21.7L14 28.5L17.5 28.5L22.5 22.2" />
+                    <path d="M4 25.5H11" />
+                  </svg>
+                </div>
+                <h2 class="card-title">Air<br />freight</h2>
+                <p class="card-body">Express, priority and deferred options across global lanes, booked and tracked end to end.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 25L8 31H30L33 25H5Z" />
+                    <path d="M11 25V17H27V25" />
+                    <path d="M15 17V11H23V17" />
+                    <path d="M19 11V7" />
+                    <path d="M3 33.5C5.5 32 8 32 10.5 33.5C13 35 15.5 35 18 33.5C20.5 32 23 32 25.5 33.5C28 35 30.5 35 33 33.5" />
+                  </svg>
+                </div>
+                <h2 class="card-title">Ocean<br />freight</h2>
+                <p class="card-body">FCL and LCL sailings on every major trade lane, with carrier choice based on cost and transit time.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 6H23L29 12V32H9V6Z" />
+                    <path d="M23 6V12H29" />
+                    <path d="M13.5 17H24.5" />
+                    <path d="M13.5 21.5H20" />
+                    <path d="M14.5 26.5L17.2 29L23.5 22.8" />
+                  </svg>
+                </div>
+                <h2 class="card-title">Customs<br />brokerage</h2>
+                <p class="card-body">Licensed in-house brokers for classification, duties and inspections, so goods clear first time.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 14L19 6L33 14V31H5V14Z" />
+                    <path d="M12 31V19H26V31" />
+                    <path d="M15.5 25H22.5" />
+                    <path d="M19 25V31" />
+                  </svg>
+                </div>
+                <h2 class="card-title">Warehousing<br />and 3PL</h2>
+                <p class="card-body">Bonded and general storage, pick and pack, and distribution that plugs straight into transport.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 7H33" />
+                    <path d="M19 7V15.5" />
+                    <path d="M19 15.5C21.2 15.5 22.5 17.2 21.8 19.1C21.1 21 19 21.5 17.4 20.5" />
+                    <path d="M11 24H27V32H11V24Z" />
+                    <path d="M19 20.8L13 24" />
+                    <path d="M19 20.8L25 24" />
+                  </svg>
+                </div>
+                <h2 class="card-title">Project<br />cargo</h2>
+                <p class="card-body">Oversized and heavy-lift moves, engineered, permitted and escorted from factory to foundation.</p>
+              </article>
+            </div>
+          </div>
+
+          <button type="button" class="services-pill" id="services-pill">Our services</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" data-open="false" aria-hidden="true">
+      <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading">
+        <div>
+          <div class="drawer-head">
+            <span class="drawer-brand">Seth's Shipment</span>
+            <button type="button" class="drawer-close" id="drawer-close">Close</button>
+          </div>
+          <div class="drawer-body" id="drawer-body"></div>
+        </div>
+        <div class="drawer-foot">Seth's Shipment · Integrated Global Logistics</div>
+      </aside>
+    </div>
+
+    <script>
+      (() => {
+        const SRC_1080 = 'https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/409763c0-95f4-49d3-a601-dc564d55072b.mp4';
+        const SRC_720 = 'https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b3718419-7a0a-478d-bfb0-0ff8bef7f3f7.mp4';
+        const A = 2.4;
+        const REC_DURATION = 11;
+        const REC_HOLD_START = 0.04;
+        const REC_HOLD_END = 0.96;
+
+        const root = document.documentElement;
+        const track = document.getElementById('track');
+        const scene = document.getElementById('scene');
+        const video = document.getElementById('clip');
+        const letters = document.getElementById('letters');
+        const readout = document.getElementById('readout');
+        const strip = document.getElementById('strip');
+        const servicesPill = document.getElementById('services-pill');
+        const cardEls = Array.from(document.querySelectorAll('.card'));
+        const cardMeta = cardEls.map((el) => ({
+          el,
+          icon: el.querySelector('.card-icon'),
+          title: el.querySelector('.card-title'),
+          body: el.querySelector('.card-body'),
+          offsetLeft: 0
+        }));
+
+        let vw = window.innerWidth;
+        let vh = scene.clientHeight || window.innerHeight;
+        let B = 1.6;
+        let stripWidth = 2000;
+        let lettersWidth = 2000;
+        let currentSrc = '';
+        let duration = 4.04;
+        let videoReady = false;
+        let cur = 0;
+        let target = 0;
+        let lastPh = -1;
+        let lastScrollY = window.scrollY;
+        let lastTime = performance.now();
+        let smoothSpeed = 0;
+        let isRecPlaying = false;
+        let recAnim = null;
+
+        const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
+
+        // Exact cubic-bezier(.4, .05, .55, .95) solver for deterministic speed & progress
+        function sampleBezier(x1, y1, x2, y2, x) {
+          const cx = 3 * x1;
+          const bx = 3 * (x2 - x1) - cx;
+          const ax = 1 - cx - bx;
+          const cy = 3 * y1;
+          const by = 3 * (y2 - y1) - cy;
+          const ay = 1 - cy - by;
+          let t = x;
+          for (let i = 0; i < 6; i++) {
+            const err = ((ax * t + bx) * t + cx) * t - x;
+            const dxdt = (3 * ax * t + 2 * bx) * t + cx;
+            if (Math.abs(err) < 1e-6 || Math.abs(dxdt) < 1e-6) break;
+            t = clamp(t - err / dxdt, 0, 1);
+          }
+          const y = ((ay * t + by) * t + cy) * t;
+          const dxdt = (3 * ax * t + 2 * bx) * t + cx;
+          const dydt = (3 * ay * t + 2 * by) * t + cy;
+          const dydx = dxdt > 1e-6 ? dydt / dxdt : 0;
+          return { y, dydx };
+        }
+
+        function evalRecAt(tSec) {
+          const u = clamp(tSec / REC_DURATION, 0, 1);
+          if (u <= REC_HOLD_START) return { p: 0, dpdt: 0 };
+          if (u >= REC_HOLD_END) return { p: 1, dpdt: 0 };
+          const span = REC_HOLD_END - REC_HOLD_START;
+          const x = (u - REC_HOLD_START) / span;
+          const { y, dydx } = sampleBezier(0.4, 0.05, 0.55, 0.95, x);
+          return { p: y, dpdt: dydx / (span * REC_DURATION) };
+        }
+
+        function pickVideoSrc() {
+          const nextSrc = window.innerWidth <= 900 ? SRC_720 : SRC_1080;
+          if (nextSrc !== currentSrc) {
+            const resumeTime = cur;
+            currentSrc = nextSrc;
+            videoReady = false;
+            video.src = nextSrc;
+            video.load();
+            if (resumeTime > 0) {
+              const restore = () => {
+                video.removeEventListener('loadedmetadata', restore);
+                cur = resumeTime;
+                syncVideoSeek();
+              };
+              video.addEventListener('loadedmetadata', restore);
+            }
+          }
+        }
+
+        function layout() {
+          vw = window.innerWidth;
+          vh = scene.clientHeight || window.innerHeight;
+          const isPhone = vw < 768 || vw <= vh;
+          const u = isPhone ? Math.min(vw / 430, 1.4) : Math.min(vw / 1440, vh / 960);
+          root.style.setProperty('--u', u + 'px');
+
+          pickVideoSrc();
+
+          let videoW, videoH, videoLeft, videoTop;
+          if (isPhone) {
+            videoW = 1.55 * vw;
+            videoH = videoW * (1080 / 1920);
+            videoLeft = 0.5 * vw - 0.4 * videoW;
+            videoTop = 0.36 * vh - 0.448 * videoH;
+          } else {
+            const scale = Math.max(vw / 1920, vh / 1080);
+            videoW = 1920 * scale;
+            videoH = 1080 * scale;
+            videoLeft = (vw - videoW) / 2;
+            videoTop = (vh - videoH) / 2;
+          }
+
+          video.style.width = videoW + 'px';
+          video.style.height = videoH + 'px';
+          video.style.left = videoLeft + 'px';
+          video.style.top = videoTop + 'px';
+
+          const edgePx = videoTop + 0.448 * videoH;
+          scene.style.setProperty('--edge-px', edgePx + 'px');
+
+          stripWidth = strip.scrollWidth;
+          lettersWidth = letters.scrollWidth;
+          B = ((stripWidth + 0.45 * vw) / vw) * 1.1;
+
+          track.style.height = (1 + A + B) * vh + 'px';
+
+          for (let i = 0; i < cardMeta.length; i++) {
+            const c = cardMeta[i];
+            c.offsetLeft = c.el.offsetLeft;
+          }
+        }
+
+        function syncVideoSeek() {
+          if (!videoReady || video.seeking) return;
+          if (Math.abs(video.currentTime - cur) > 1 / 60) {
+            video.currentTime = cur;
+          }
+        }
+
+        video.addEventListener('loadedmetadata', () => {
+          videoReady = true;
+          duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 4.04;
+          syncVideoSeek();
+        });
+
+        video.addEventListener('seeked', syncVideoSeek);
+
+        function applyScene(scrollY, speedKmh, immediate) {
+          const clipSpan = A * vh || 1;
+          const stripSpan = B * vh || 1;
+          const q = clamp(scrollY / clipSpan, 0, 1);
+          const maxClipTime = Math.max(0, duration - 1 / 48);
+          target = q * maxClipTime;
+
+          if (immediate) {
+            cur = target;
+          } else {
+            cur += (target - cur) * 0.2;
+          }
+          syncVideoSeek();
+
+          const ph = q >= 0.94 ? 1 : 0;
+          if (ph !== lastPh) {
+            lastPh = ph;
+            scene.style.setProperty('--ph', String(ph));
+          }
+
+          const r = clamp((scrollY - A * vh) / stripSpan, 0, 1);
+          const stripX = vw - r * (stripWidth + 0.45 * vw);
+          const lettersX = vw - r * (lettersWidth + vw);
+
+          strip.style.transform = `translate3d(${stripX}px, 0, 0)`;
+          letters.style.transform = `translate3d(${lettersX}px, -100%, 0)`;
+
+          for (let i = 0; i < cardMeta.length; i++) {
+            const c = cardMeta[i];
+            const cardLeft = stripX + c.offsetLeft;
+            const s = clamp((0.98 - cardLeft / vw) / 0.3, -0.4, 1.6) * 100;
+            const sPct = s.toFixed(2) + '%';
+            c.title.style.setProperty('--s', sPct);
+            c.body.style.setProperty('--s', sPct);
+            if (c.icon) {
+              c.icon.style.setProperty('--icon-op', clamp((s + 40) / 70, 0, 1).toFixed(3));
+            }
+          }
+
+          const displaySpeed = Math.min(99, Math.round(speedKmh));
+          readout.textContent = String(displaySpeed).padStart(2, '0') + ' KM/H';
+          return cur;
+        }
+
+        function initRecWebAnimation() {
+          const driver = document.createElement('div');
+          driver.style.cssText = 'position:fixed;top:-9999px;left:0;width:10px;height:1px;pointer-events:none;opacity:0;';
+          document.body.appendChild(driver);
+          return driver.animate(
+            [
+              { transform: 'translateX(0px)', offset: 0 },
+              { transform: 'translateX(0px)', offset: REC_HOLD_START, easing: 'cubic-bezier(.4,.05,.55,.95)' },
+              { transform: 'translateX(1000px)', offset: REC_HOLD_END },
+              { transform: 'translateX(1000px)', offset: 1 }
+            ],
+            { duration: REC_DURATION * 1000, fill: 'both', iterations: 1 }
+          );
+        }
+
+        // Frame-by-frame deterministic recorder hook
+        window.__recTime = function (vid, t) {
+          isRecPlaying = false;
+          if (recAnim) {
+            recAnim.pause();
+            recAnim.currentTime = clamp(t, 0, REC_DURATION) * 1000;
+          }
+          const { p, dpdt } = evalRecAt(t);
+          const totalScroll = (A + B) * vh;
+          const scrollY = p * totalScroll;
+          window.scrollTo(0, scrollY);
+          const dydt = dpdt * totalScroll;
+          const scriptedSpeed = Math.min(99, Math.abs(dydt) / 32);
+          const clipTime = applyScene(scrollY, scriptedSpeed, true);
+          if (vid && vid !== video && Number.isFinite(clipTime)) {
+            try {
+              vid.currentTime = clipTime;
+            } catch (_) {}
+          }
+          return clipTime;
+        };
+
+        function tick(now) {
+          const dt = Math.max((now - lastTime) / 1000, 0.001);
+          lastTime = now;
+
+          let scrollY = window.scrollY;
+          if (isRecPlaying && recAnim) {
+            const tSec = clamp((Number(recAnim.currentTime) || 0) / 1000, 0, REC_DURATION);
+            const { p, dpdt } = evalRecAt(tSec);
+            const totalScroll = (A + B) * vh;
+            scrollY = p * totalScroll;
+            window.scrollTo(0, scrollY);
+            const scriptedSpeed = Math.min(99, Math.abs(dpdt * totalScroll) / 32);
+            smoothSpeed = scriptedSpeed;
+            applyScene(scrollY, smoothSpeed, false);
+            if (tSec >= REC_DURATION) {
+              isRecPlaying = false;
+            }
+          } else {
+            const dy = Math.abs(scrollY - lastScrollY);
+            lastScrollY = scrollY;
+            const rawSpeed = Math.min(99, dy / dt / 32);
+            smoothSpeed += (rawSpeed - smoothSpeed) * 0.18;
+            if (smoothSpeed < 0.05 && dy === 0) smoothSpeed = 0;
+            applyScene(scrollY, smoothSpeed, false);
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // Interactive handlers for nav, pill, and drawer
+        const backdrop = document.getElementById('drawer-backdrop');
+        const drawerBody = document.getElementById('drawer-body');
+        const drawerClose = document.getElementById('drawer-close');
+
+        const SHIPMENT_STAGES = [
+          'Booked & Dispatched',
+          'Terminal Handling',
+          'In Transit',
+          'Customs Brokerage',
+          'Out for Delivery'
+        ];
+
+        const SHIPMENTS = {
+          'SS-482910': {
+            route: 'Rotterdam → Newark · Container #SSCU 4829104',
+            stageIndex: 1,
+            details: [
+              'Manifest cleared & gate-in confirmed · Nov 21, 08:40',
+              'Reach-stacker lift onto chassis · Today, 13:05',
+              'Scheduled ocean departure · Berth 4',
+              'Pre-arrival customs filing submitted',
+              'Final-mile drayage slot reserved'
+            ]
+          },
+          'SS-719042': {
+            route: 'Singapore → Hamburg · Air Waybill #719042',
+            stageIndex: 3,
+            details: [
+              'Origin pallet build & security screen · Nov 20, 19:15',
+              'Airside ramp transfer completed · Nov 21, 02:10',
+              'Freighter arrival FRA · Nov 22, 16:45',
+              'Licensed broker inspection active · Today, 11:20',
+              'Regional courier handoff queued'
+            ]
+          },
+          'SS-305118': {
+            route: 'Busan → Long Beach · FCL #SSCU 3051189',
+            stageIndex: 4,
+            details: [
+              'Factory pickup & export seal · Nov 10, 09:00',
+              'Port yard gantry load · Nov 11, 14:30',
+              'Trans-Pacific crossing completed · Nov 21, 06:15',
+              'Duties settled & customs released · Nov 22, 15:40',
+              'Tractor unit en route to consignee dock · Today, 12:50'
+            ]
+          }
+        };
+
+        const followedShipments = new Set();
+
+        function lookupShipment(rawId) {
+          const id = rawId.trim().toUpperCase();
+          if (!id) return null;
+          if (SHIPMENTS[id]) return { id, ...SHIPMENTS[id] };
+          let hash = 0;
+          for (let i = 0; i < id.length; i++) {
+            hash = (hash * 31 + id.charCodeAt(i)) % 997;
+          }
+          const stageIndex = hash % SHIPMENT_STAGES.length;
+          return {
+            id,
+            route: `Integrated Freight Lane · Ref ${id}`,
+            stageIndex,
+            details: [
+              'Booking confirmed & waybill issued',
+              'Terminal container transfer logged',
+              'Linehaul transit active on primary lane',
+              'Customs documentation under broker review',
+              'Scheduled for final consignee delivery'
+            ]
+          };
+        }
+
+        function escapeHtml(str) {
+          return str.replace(/[&<>"']/g, (ch) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+          }[ch]));
+        }
+
+        function renderTrackerResult(container, rawId) {
+          const data = lookupShipment(rawId);
+          if (!data) return;
+          const safeId = escapeHtml(data.id);
+          const isFollowing = followedShipments.has(data.id);
+          const stagesHtml = SHIPMENT_STAGES.map((label, idx) => {
+            const state = idx < data.stageIndex ? 'done' : idx === data.stageIndex ? 'current' : 'pending';
+            const badge = state === 'current' ? '<span class="stage-badge">Current stage</span>' : state === 'done' ? '<span class="stage-badge" style="color:rgba(255,255,255,0.5)">Done</span>' : '';
+            return `
+              <li class="track-stage" data-state="${state}">
+                <span class="stage-dot" aria-hidden="true"></span>
+                <div>
+                  <div class="stage-name"><span>${label}</span>${badge}</div>
+                  <p class="stage-detail">${data.details[idx]}</p>
+                </div>
+              </li>
+            `;
+          }).join('');
+
+          container.innerHTML = `
+            <div class="track-result">
+              <div class="track-summary">
+                <div>
+                  <div class="track-id">${safeId}</div>
+                  <p class="track-route">${escapeHtml(data.route)}</p>
+                </div>
+                <button type="button" class="track-follow-btn" id="track-follow-btn" data-following="${isFollowing}">
+                  ${isFollowing ? 'Following' : 'Follow updates'}
+                </button>
+              </div>
+              <ol class="track-stages">${stagesHtml}</ol>
+              <p class="track-follow-note" id="track-follow-note"></p>
+            </div>
+          `;
+
+          const followBtn = document.getElementById('track-follow-btn');
+          const followNote = document.getElementById('track-follow-note');
+          const updateNote = (following) => {
+            if (!followNote) return;
+            followNote.textContent = following
+              ? `Following stage alerts for ${data.id}. Currently at: ${SHIPMENT_STAGES[data.stageIndex]}.`
+              : `Current stage: ${SHIPMENT_STAGES[data.stageIndex]} (${data.stageIndex + 1} of ${SHIPMENT_STAGES.length}).`;
+          };
+          updateNote(isFollowing);
+
+          if (followBtn) {
+            followBtn.addEventListener('click', () => {
+              if (followedShipments.has(data.id)) {
+                followedShipments.delete(data.id);
+                followBtn.setAttribute('data-following', 'false');
+                followBtn.textContent = 'Follow updates';
+                updateNote(false);
+              } else {
+                followedShipments.add(data.id);
+                followBtn.setAttribute('data-following', 'true');
+                followBtn.textContent = 'Following';
+                updateNote(true);
+              }
+            });
+          }
+        }
+
+        function openDrawer(mode) {
+          if (mode === 'menu') {
+            drawerBody.innerHTML = `
+              <h2 class="drawer-title" id="drawer-heading">Navigate Seth's Shipment</h2>
+              <div class="drawer-list">
+                <button type="button" class="drawer-jump" data-scroll="0"><span>01. Terminal Handling</span><span>↑</span></button>
+                <button type="button" class="drawer-jump" data-scroll="services"><span>02. Integrated Services</span><span>→</span></button>
+                <button type="button" class="drawer-jump" data-scroll="cards"><span>03. Air, Ocean &amp; Customs</span><span>→</span></button>
+                <button type="button" class="drawer-jump" data-action="work"><span>04. Work with us</span><span>↗</span></button>
+              </div>
+              <section class="track-section" aria-label="Track your shipment">
+                <h3 class="track-heading">Track Your Shipment</h3>
+                <form class="track-form" id="track-form">
+                  <input type="text" class="track-input" id="track-input" value="SS-482910" placeholder="Enter ID (e.g. SS-482910)" aria-label="Tracking number" required />
+                  <button type="submit" class="track-btn">Track</button>
+                </form>
+                <div class="track-samples">
+                  <span>Samples:</span>
+                  <button type="button" class="track-sample" data-track-id="SS-482910">SS-482910</button>
+                  <button type="button" class="track-sample" data-track-id="SS-719042">SS-719042</button>
+                  <button type="button" class="track-sample" data-track-id="SS-305118">SS-305118</button>
+                </div>
+                <div id="track-output"></div>
+              </section>
+            `;
+            drawerBody.querySelectorAll('[data-scroll]').forEach((btn) => {
+              btn.addEventListener('click', () => {
+                const targetKey = btn.getAttribute('data-scroll');
+                closeDrawer();
+                if (targetKey === '0') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (targetKey === 'services') {
+                  window.scrollTo({ top: (A + B * 0.25) * vh, behavior: 'smooth' });
+                } else if (targetKey === 'cards') {
+                  window.scrollTo({ top: (A + B * 0.65) * vh, behavior: 'smooth' });
+                }
+              });
+            });
+            const workBtn = drawerBody.querySelector('[data-action="work"]');
+            if (workBtn) workBtn.addEventListener('click', () => openDrawer('work'));
+
+            const trackInput = document.getElementById('track-input');
+            const trackOutput = document.getElementById('track-output');
+            const trackForm = document.getElementById('track-form');
+            if (trackOutput && trackInput) {
+              renderTrackerResult(trackOutput, trackInput.value);
+              trackForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                renderTrackerResult(trackOutput, trackInput.value);
+              });
+              drawerBody.querySelectorAll('[data-track-id]').forEach((sampleBtn) => {
+                sampleBtn.addEventListener('click', () => {
+                  const id = sampleBtn.getAttribute('data-track-id');
+                  trackInput.value = id;
+                  renderTrackerResult(trackOutput, id);
+                });
+              });
+            }
+          } else if (mode === 'follow') {
+            drawerBody.innerHTML = `
+              <h2 class="drawer-title" id="drawer-heading">Follow Seth's Shipment</h2>
+              <div class="drawer-list">
+                <button type="button" class="drawer-jump" data-social="Freight Dispatch Notes"><span>Freight Dispatch Notes</span><span>Monthly</span></button>
+                <button type="button" class="drawer-jump" data-social="Port &amp; Lane Advisories"><span>Port &amp; Lane Advisories</span><span>Weekly</span></button>
+                <button type="button" class="drawer-jump" data-social="Fleet &amp; Terminal Updates"><span>Fleet &amp; Terminal Updates</span><span>Quarterly</span></button>
+              </div>
+              <p class="drawer-status" id="follow-status">Select a briefing channel to subscribe.</p>
+            `;
+            drawerBody.querySelectorAll('[data-social]').forEach((btn) => {
+              btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-social');
+                const status = document.getElementById('follow-status');
+                if (status) status.textContent = `Subscribed to ${name}.`;
+              });
+            });
+          } else {
+            drawerBody.innerHTML = `
+              <h2 class="drawer-title" id="drawer-heading">Work with us</h2>
+              <form class="drawer-form" id="work-form">
+                <label class="drawer-field">
+                  <span>Company</span>
+                  <input type="text" name="company" required placeholder="Northstar Manufacturing" />
+                </label>
+                <label class="drawer-field">
+                  <span>Work email</span>
+                  <input type="email" name="email" required placeholder="logistics@company.com" />
+                </label>
+                <label class="drawer-field">
+                  <span>Lane &amp; cargo scope</span>
+                  <textarea name="scope" rows="3" required placeholder="Origin, destination, volume and schedule"></textarea>
+                </label>
+                <button type="submit" class="drawer-submit">Send inquiry</button>
+                <p class="drawer-status" id="form-status"></p>
+              </form>
+            `;
+            const form = document.getElementById('work-form');
+            if (form) {
+              form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const status = document.getElementById('form-status');
+                if (status) {
+                  status.textContent = 'Brief received. Our operations desk will respond within one business day.';
+                }
+                form.reset();
+              });
+            }
+          }
+          backdrop.setAttribute('data-open', 'true');
+          backdrop.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeDrawer() {
+          backdrop.setAttribute('data-open', 'false');
+          backdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        document.getElementById('nav-brand').addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        document.getElementById('btn-menu').addEventListener('click', () => openDrawer('menu'));
+        document.getElementById('btn-follow').addEventListener('click', () => openDrawer('follow'));
+        document.getElementById('btn-work').addEventListener('click', () => openDrawer('work'));
+        drawerClose.addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', (e) => {
+          if (e.target === backdrop) closeDrawer();
+        });
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && backdrop.getAttribute('data-open') === 'true') {
+            closeDrawer();
+          }
+        });
+
+        servicesPill.addEventListener('click', () => {
+          isRecPlaying = false;
+          if (recAnim) recAnim.pause();
+          window.scrollTo({
+            top: (A + B * 0.3) * vh,
+            behavior: 'smooth'
+          });
+        });
+
+        // Init
+        layout();
+        applyScene(window.scrollY, 0, true);
+
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => {
+            layout();
+            applyScene(window.scrollY, smoothSpeed, true);
+          });
+        }
+
+        let resizeRaf = 0;
+        window.addEventListener('resize', () => {
+          cancelAnimationFrame(resizeRaf);
+          resizeRaf = requestAnimationFrame(() => {
+            layout();
+            applyScene(window.scrollY, smoothSpeed, true);
+          });
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('rec') === '1') {
+          recAnim = initRecWebAnimation();
+          isRecPlaying = true;
+        }
+
+        requestAnimationFrame(tick);
+      })();
+    </script>
+  </body>
+</html>

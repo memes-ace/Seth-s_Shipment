@@ -1,0 +1,6 @@
+{
+  "name": "Seth's Shipment — Freight Services",
+  "description": "Scroll-driven freight hero and integrated logistics services showcase for Seth's Shipment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
